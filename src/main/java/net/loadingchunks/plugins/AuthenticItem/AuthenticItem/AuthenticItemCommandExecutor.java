@@ -64,6 +64,9 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		AItem item = new AItem(p.getInventory().getItemInHand());
         		
+        		if(item.itemstack == null)
+        			this.plugin.getLogger().warning("Uh oh! The item stack is empty!");
+        		
         		if(item.getDisplayName() == null)
         		{
         			sender.sendMessage("You must rename this item first.");
