@@ -47,7 +47,10 @@ public class AItem {
 	
 	private NBTTagCompound getDisplay()
 	{
-		return this.itemstack.getTag().getCompound("display");
+		if(!this.itemstack.getTag().hasKey("display"))
+			return null;
+		else
+			return this.itemstack.getTag().getCompound("display");
 	}
 	
 	public String getDisplayName()

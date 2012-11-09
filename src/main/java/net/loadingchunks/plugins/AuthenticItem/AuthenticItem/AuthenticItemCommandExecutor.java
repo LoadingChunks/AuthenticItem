@@ -37,7 +37,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("authentic")) {
         	
-        	if(sender.hasPermission("aitem.authentic"))
+        	if(!sender.hasPermission("aitem.authentic"))
         	{
         		sender.sendMessage("You do not have permission to use this command.");
         		return true;
@@ -52,7 +52,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		}
         		
         		try {
-        			AuthenticTypes.valueOf(args[0]); // Worst check ever.
+        			AuthenticTypes.valueOf(args[0].toUpperCase()); // Worst check ever.
         		} catch (Exception e)
         		{
         			sender.sendMessage("Invalid type given.");
