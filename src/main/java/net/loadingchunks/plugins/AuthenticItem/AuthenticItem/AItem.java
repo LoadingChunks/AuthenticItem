@@ -13,8 +13,13 @@ public class AItem {
 
 	public AItem(Item item)
 	{
-		CraftItem citem = (CraftItem)item;
 		CraftItemStack cstack = new CraftItemStack(item.getItemStack());
+		
+		NBTTagCompound tag = cstack.getHandle().getTag();
+		
+		if(tag == null)
+			cstack.getHandle().setTag(new NBTTagCompound());
+		
 		this.itemstack = cstack.getHandle();
 	}
 	
