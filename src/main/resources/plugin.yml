@@ -1,0 +1,8 @@
+name: AuthenticItem
+main: net.loadingchunks.plugins.AuthenticItem.AuthenticItem.AuthenticItem
+version: 0.1
+
+commands:
+   command:
+      description: A Command
+      usage: /<command> 
