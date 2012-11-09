@@ -26,6 +26,12 @@ public class AItem {
 	public AItem(ItemStack item)
 	{
 		CraftItemStack cstack = new CraftItemStack(item);
+		
+		NBTTagCompound tag = cstack.getHandle().getTag();
+		
+		if(tag == null)
+			cstack.getHandle().setTag(new NBTTagCompound());
+		
 		this.itemstack = cstack.getHandle();
 	}
 
