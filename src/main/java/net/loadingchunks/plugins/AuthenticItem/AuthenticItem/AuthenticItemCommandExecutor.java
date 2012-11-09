@@ -17,6 +17,10 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -43,6 +47,8 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		return true;
         	}
         	
+    		ArrayList<String> authentictypes = new ArrayList<String>();
+        	
         	if(args.length > 0)
         	{
         		if(!(sender instanceof Player))
@@ -51,12 +57,17 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         			return false;
         		}
         		
+        		for(AuthenticTypes t : AuthenticTypes.values())
+        		{
+        			authentictypes.add(t.toString());
+        		}
+        		
         		try {
         			AuthenticTypes.valueOf(args[0].toUpperCase()); // Worst check ever.
         		} catch (Exception e)
         		{
         			sender.sendMessage("Invalid type given.");
-            		sender.sendMessage("Valid types: " + AuthenticTypes.values().toString());
+            		sender.sendMessage("Valid types: " + Arrays.toString(authentictypes.toArray()));
         			return false;
         		}
         		
@@ -90,7 +101,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		p.getInventory().setItemInHand(cstack);
         	} else {
         		sender.sendMessage("Please specify a trait type for this item.");
-        		sender.sendMessage("Valid types: " + AuthenticTypes.values().toString());
+        		sender.sendMessage("Valid types: " + Arrays.toString(authentictypes.toArray()));
         		return false;
         	}
         }
