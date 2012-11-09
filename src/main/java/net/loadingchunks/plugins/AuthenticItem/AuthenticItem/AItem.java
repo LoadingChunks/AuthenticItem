@@ -58,20 +58,23 @@ public class AItem {
 	
 	private NBTTagCompound getDisplay()
 	{
-		if(!this.itemstack.getTag().hasKey("display"))
-			return null;
-		else
-			return this.itemstack.getTag().getCompound("display");
+		return this.itemstack.getTag().getCompound("display");
 	}
 	
 	public String getDisplayName()
 	{
 		if(getDisplay() == null)
+		{
+			System.out.println("Nope.")
 			return null;
+		}
 		String name = getDisplay().getString("Name");
 		
 		if(name.equals(""))
+		{
+			System.out.println(name);
 			return null;
+		}
 		else
 			return name;
 	}
