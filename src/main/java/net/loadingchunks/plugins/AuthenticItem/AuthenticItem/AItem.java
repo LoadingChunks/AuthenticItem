@@ -65,7 +65,7 @@ public class AItem {
 	{
 		if(getDisplay() == null)
 		{
-			System.out.println("Nope.")
+			System.out.println("Nope.");
 			return null;
 		}
 		String name = getDisplay().getString("Name");
