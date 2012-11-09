@@ -35,6 +35,7 @@ public class AuthenticItemEventListener implements Listener {
 	public void onPlayerPickupItem(PlayerPickupItemEvent event)
 	{
 		AItem item = new AItem(event.getItem());
+		item.setPlugin(plugin);
 		
 		if(item.getAuthentic() == null)
 			return;

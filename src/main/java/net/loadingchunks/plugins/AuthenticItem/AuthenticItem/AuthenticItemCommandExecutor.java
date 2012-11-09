@@ -74,6 +74,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		Player p = (Player)sender;
         		
         		AItem item = new AItem(p.getInventory().getItemInHand());
+        		item.setPlugin(plugin);
         		
         		if(item.itemstack == null)
         			this.plugin.getLogger().warning("Uh oh! The item stack is empty!");

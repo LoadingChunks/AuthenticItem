@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class AItem {
 	
 	net.minecraft.server.ItemStack itemstack;
+	AuthenticItem plugin;
 
 	public AItem(Item item)
 	{
@@ -33,6 +34,11 @@ public class AItem {
 			cstack.getHandle().setTag(new NBTTagCompound());
 		
 		this.itemstack = cstack.getHandle();
+	}
+	
+	public void setPlugin(AuthenticItem plugin)
+	{
+		this.plugin = plugin;
 	}
 
 	public String getAuthentic()
@@ -65,14 +71,14 @@ public class AItem {
 	{
 		if(getDisplay() == null)
 		{
-			System.out.println("Nope.");
+			this.plugin.getLogger().warning("No DP Tag");
 			return null;
 		}
 		String name = getDisplay().getString("Name");
 		
 		if(name.equals(""))
 		{
-			System.out.println(name);
+			this.plugin.getLogger().warning(name);
 			return null;
 		}
 		else
