@@ -101,6 +101,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		item.setDisplayName(AuthenticTypes.valueOf(args[0].toUpperCase()) + " " + disp + ChatColor.RESET);
         		
         		CraftItemStack cstack = new CraftItemStack(item.getStack());
+
         		p.getInventory().setItemInHand(cstack);
         		return true;
         	} else {

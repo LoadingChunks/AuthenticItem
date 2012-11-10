@@ -45,14 +45,10 @@ public class AuthenticItemEventListener implements Listener {
 		String displayName = item.getDisplayName();
 		String name = "";
 				
-		if(displayName.isEmpty() || displayName == null)
+		if(displayName == null || displayName.isEmpty())
 			name = cstack.getType().name();
 		else
 			name = displayName;
-		
-		try {
-			name = AuthenticTypes.valueOf(item.getAuthentic().toUpperCase()).toString();
-		} catch (Exception e) {}
 
 		event.setMessage(event.getMessage().replace("{hand}", name));
 	}
