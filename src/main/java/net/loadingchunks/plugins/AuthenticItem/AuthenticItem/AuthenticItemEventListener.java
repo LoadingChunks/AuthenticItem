@@ -35,7 +35,7 @@ public class AuthenticItemEventListener implements Listener {
 	}
 	
 	@EventHandler
-	public void playerChat(AsyncPlayerChatEvent event)
+	public void playerChat(PlayerChatEvent event) // I hate myself for using that event type.
 	{
 		CraftItemStack cstack = (CraftItemStack)event.getPlayer().getItemInHand();
 		
