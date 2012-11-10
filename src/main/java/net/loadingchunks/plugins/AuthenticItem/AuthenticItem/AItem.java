@@ -38,6 +38,7 @@ public class AItem {
 	public void setAuthentic(String type)
 	{
 		this.itemstack.getHandle().getTag().setString("authentic_type", type);
+		this.itemstack.getHandle().getTag().setInt("RepairCost", 999);
 	}
 	
 	public net.minecraft.server.ItemStack getStack()
