@@ -22,6 +22,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class AuthenticItemEventListener implements Listener {
@@ -30,6 +32,29 @@ public class AuthenticItemEventListener implements Listener {
 
 	public AuthenticItemEventListener(AuthenticItem plugin) {
 		this.plugin = plugin;
+	}
+	
+	@EventHandler
+	public void playerChat(AsyncPlayerChatEvent event)
+	{
+		CraftItemStack cstack = (CraftItemStack)event.getPlayer().getItemInHand();
+		
+		AItem item = new AItem(cstack);
+		item.setPlugin(plugin);
+		
+		String displayName = item.getDisplayName();
+		String name = "";
+				
+		if(displayName.isEmpty() || displayName == null)
+			name = cstack.getType().name();
+		else
+			name = displayName;
+		
+		try {
+			name = AuthenticTypes.valueOf(item.getAuthentic().toUpperCase()).toString();
+		} catch (Exception e) {}
+
+		event.setMessage(event.getMessage().replace("{hand}", name));
 	}
 
 	@EventHandler
