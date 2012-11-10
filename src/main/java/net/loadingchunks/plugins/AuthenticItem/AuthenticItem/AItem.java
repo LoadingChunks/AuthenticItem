@@ -11,7 +11,7 @@ public class AItem {
 	
 	CraftItemStack itemstack;
 	AuthenticItem plugin;
-	
+
 	public AItem(CraftItemStack item)
 	{
 		NBTTagCompound tag = item.getHandle().getTag();

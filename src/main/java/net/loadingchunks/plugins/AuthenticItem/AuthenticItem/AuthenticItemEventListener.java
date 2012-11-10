@@ -48,10 +48,15 @@ public class AuthenticItemEventListener implements Listener {
 			name = event.getItem().getItemStack().getType().name();
 		else
 			name = displayName;
+		
+		String aPrefix = "";
+		
+		if(name.toLowerCase().charAt(0) == 'a' || name.toLowerCase().charAt(0) == 'e' || name.toLowerCase().charAt(0) == 'i' || name.toLowerCase().charAt(0) == 'o' || name.toLowerCase().charAt(0) == 'u')
+			aPrefix = "n";
 
 		try {
-			AuthenticTypes type = AuthenticTypes.valueOf(item.getAuthentic().toUpperCase());
-			event.getPlayer().sendMessage("You have picked up a " + AuthenticTypes.valueOf(type.toString()));
+			AuthenticTypes.valueOf(item.getAuthentic().toUpperCase());
+			event.getPlayer().sendMessage("You have picked up a" + aPrefix + " " + name + ChatColor.RESET);
 		} catch (Exception e)
 		{
 			event.getPlayer().sendMessage("You have picked up an " + ChatColor.GRAY + "Unknown " + name);
