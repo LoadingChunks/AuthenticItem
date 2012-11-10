@@ -48,6 +48,11 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         	}
         	
     		ArrayList<String> authentictypes = new ArrayList<String>();
+    		
+    		for(AuthenticTypes t : AuthenticTypes.values())
+    		{
+    			authentictypes.add(t.toString());
+    		}
         	
         	if(args.length > 0)
         	{
@@ -55,11 +60,6 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		{
         			sender.sendMessage("You must be in-game to use this command.");
         			return false;
-        		}
-        		
-        		for(AuthenticTypes t : AuthenticTypes.values())
-        		{
-        			authentictypes.add(t.toString());
         		}
         		
         		try {
