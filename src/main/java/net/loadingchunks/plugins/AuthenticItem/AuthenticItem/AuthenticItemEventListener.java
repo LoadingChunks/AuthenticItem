@@ -45,7 +45,7 @@ public class AuthenticItemEventListener implements Listener {
 		if(!event.getMessage().contains("{hand}"))
 			return;
 		
-		AItem item = new AItem(cstack);
+		AItem item = new AItem(cstack.clone());
 		item.setPlugin(plugin);
 		
 		String displayName = item.getDisplayName();
@@ -62,7 +62,7 @@ public class AuthenticItemEventListener implements Listener {
 	@EventHandler
 	public void onPlayerPickupItem(PlayerPickupItemEvent event)
 	{
-		AItem item = new AItem((CraftItemStack)event.getItem().getItemStack());
+		AItem item = new AItem((CraftItemStack)event.getItem().getItemStack().clone());
 		item.setPlugin(plugin);
 		
 		if(item.getAuthentic() == null)
