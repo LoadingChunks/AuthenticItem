@@ -39,6 +39,12 @@ public class AuthenticItemEventListener implements Listener {
 	{
 		CraftItemStack cstack = (CraftItemStack)event.getPlayer().getItemInHand();
 		
+		if(cstack == null || cstack.getTypeId() == 0)
+			return;
+		
+		if(!event.getMessage().contains("{hand}"))
+			return;
+		
 		AItem item = new AItem(cstack);
 		item.setPlugin(plugin);
 		

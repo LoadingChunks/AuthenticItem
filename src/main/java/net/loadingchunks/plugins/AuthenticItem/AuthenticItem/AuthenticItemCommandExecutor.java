@@ -51,7 +51,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
     		
     		for(AuthenticTypes t : AuthenticTypes.values())
     		{
-    			authentictypes.add(t.toString());
+    			authentictypes.add(t.toString() + ChatColor.RESET);
     		}
         	
         	if(args.length > 0)
@@ -74,6 +74,12 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		Player p = (Player)sender;
         		
         		CraftItemStack hand = (CraftItemStack)p.getInventory().getItemInHand();
+        		
+        		if(hand == null || hand.getTypeId() == 0)
+        		{
+        			sender.sendMessage("You are't holding anything.");
+        			return true;
+        		}
         		
         		AItem item = new AItem(hand);
         		item.setPlugin(plugin);
@@ -101,8 +107,11 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		item.setDisplayName(AuthenticTypes.valueOf(args[0].toUpperCase()) + " " + disp + ChatColor.RESET);
         		
         		CraftItemStack cstack = new CraftItemStack(item.getStack());
+        		
+        		cstack.setDurability((short)2000);
 
         		p.getInventory().setItemInHand(cstack);
+        		sender.sendMessage("Item: " + item.getDisplayName());
         		return true;
         	} else {
         		sender.sendMessage("Please specify a trait type for this item.");
