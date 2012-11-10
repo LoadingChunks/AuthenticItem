@@ -36,6 +36,16 @@ public class AItem {
 		this.itemstack = cstack.getHandle();
 	}
 	
+	public AItem(CraftItemStack item)
+	{
+		NBTTagCompound tag = item.getHandle().getTag();
+		
+		if(tag == null)
+			item.getHandle().setTag(new NBTTagCompound());
+		
+		this.itemstack = item.getHandle();
+	}
+	
 	public void setPlugin(AuthenticItem plugin)
 	{
 		this.plugin = plugin;

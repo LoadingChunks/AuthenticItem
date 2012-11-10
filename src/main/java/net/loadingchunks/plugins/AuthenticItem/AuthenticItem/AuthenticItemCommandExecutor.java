@@ -73,7 +73,9 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		Player p = (Player)sender;
         		
-        		AItem item = new AItem(p.getInventory().getItemInHand());
+        		CraftItemStack hand = (CraftItemStack)p.getInventory().getItemInHand();
+        		
+        		AItem item = new AItem(hand);
         		item.setPlugin(plugin);
         		
         		if(item.itemstack == null)
