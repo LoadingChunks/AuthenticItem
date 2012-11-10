@@ -19,6 +19,7 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
 import org.bukkit.ChatColor;
 
+import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPickupItemEvent;
@@ -34,7 +35,7 @@ public class AuthenticItemEventListener implements Listener {
 	@EventHandler
 	public void onPlayerPickupItem(PlayerPickupItemEvent event)
 	{
-		AItem item = new AItem(event.getItem());
+		AItem item = new AItem((CraftItemStack)event.getItem().getItemStack());
 		item.setPlugin(plugin);
 		
 		if(item.getAuthentic() == null)

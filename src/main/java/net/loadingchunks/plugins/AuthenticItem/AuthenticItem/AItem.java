@@ -11,30 +11,6 @@ public class AItem {
 	
 	CraftItemStack itemstack;
 	AuthenticItem plugin;
-
-	public AItem(Item item)
-	{
-		CraftItemStack cstack = new CraftItemStack(item.getItemStack());
-		
-		NBTTagCompound tag = cstack.getHandle().getTag();
-		
-		if(tag == null)
-			cstack.getHandle().setTag(new NBTTagCompound());
-		
-		this.itemstack = cstack;
-	}
-	
-	public AItem(ItemStack item)
-	{
-		CraftItemStack cstack = itemstack;
-		
-		NBTTagCompound tag = cstack.getHandle().getTag();
-		
-		if(tag == null)
-			cstack.getHandle().setTag(new NBTTagCompound());
-		
-		this.itemstack = cstack;
-	}
 	
 	public AItem(CraftItemStack item)
 	{
@@ -78,15 +54,12 @@ public class AItem {
 	{
 		if(getDisplay() == null)
 		{
-			this.plugin.getLogger().warning("No DP Tag");
 			return null;
 		}
 		String name = getDisplay().getString("Name");
 		
 		if(name.equals(""))
 		{
-			this.plugin.getLogger().warning(name);
-			this.plugin.getLogger().warning(this.itemstack.toString());
 			return null;
 		}
 		else

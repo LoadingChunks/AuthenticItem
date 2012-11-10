@@ -93,15 +93,16 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		for(AuthenticTypes rem : AuthenticTypes.values())
         		{
-        			disp = disp.replace(rem.toString(), "");
+        			disp = disp.replace(rem.toString() + " ", "");
         		}
         		
         		disp = ChatColor.stripColor(disp);
         		
-        		item.setDisplayName(AuthenticTypes.valueOf(args[0]) + disp + ChatColor.RESET);
+        		item.setDisplayName(AuthenticTypes.valueOf(args[0].toUpperCase()) + " " + disp + ChatColor.RESET);
         		
         		CraftItemStack cstack = new CraftItemStack(item.getStack());
         		p.getInventory().setItemInHand(cstack);
+        		return true;
         	} else {
         		sender.sendMessage("Please specify a trait type for this item.");
         		sender.sendMessage("Valid types: " + Arrays.toString(authentictypes.toArray()));
