@@ -79,6 +79,7 @@ public class AItem {
 		if(name.equals(""))
 		{
 			this.plugin.getLogger().warning(name);
+			this.plugin.getLogger().warning(this.itemstack.toString());
 			return null;
 		}
 		else
