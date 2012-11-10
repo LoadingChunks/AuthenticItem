@@ -108,7 +108,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		CraftItemStack cstack = new CraftItemStack(item.getStack());
         		
-        		cstack.setDurability((short)2000);
+        		cstack.setDurability((short)-5000);
 
         		p.getInventory().setItemInHand(cstack);
         		sender.sendMessage("Item: " + item.getDisplayName());
