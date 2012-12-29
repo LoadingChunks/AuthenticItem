@@ -17,6 +17,8 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,5 +44,21 @@ public class AuthenticItem extends JavaPlugin {
 
 		pm.registerEvents(eventListener, this);
 
+	}
+	
+	public String formatText(String text, CraftItemStack cstack)
+	{
+		AItem item = new AItem(cstack.clone());
+		item.setPlugin(this);
+		
+		String displayName = item.getDisplayName();
+		String name = "";
+				
+		if(displayName == null || displayName.isEmpty())
+			name = cstack.getType().name();
+		else
+			name = displayName;
+		
+		return name;
 	}
 }

@@ -24,6 +24,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class AuthenticItemEventListener implements Listener {
@@ -45,18 +46,24 @@ public class AuthenticItemEventListener implements Listener {
 		if(!event.getMessage().contains("{hand}"))
 			return;
 		
-		AItem item = new AItem(cstack.clone());
-		item.setPlugin(plugin);
+		event.setMessage(this.plugin.formatText(event.getMessage(), cstack));
+	}
+	
+	@EventHandler
+	public void commandPreProcess(PlayerCommandPreprocessEvent event)
+	{
+		if(event.getPlayer() == null)
+			return;
 		
-		String displayName = item.getDisplayName();
-		String name = "";
-				
-		if(displayName == null || displayName.isEmpty())
-			name = cstack.getType().name();
-		else
-			name = displayName;
-
-		event.setMessage(event.getMessage().replace("{hand}", name));
+		CraftItemStack cstack = (CraftItemStack)event.getPlayer().getItemInHand();
+		
+		if(cstack == null || cstack.getTypeId() == 0)
+			return;
+		
+		if(!event.getMessage().contains("{hand}"))
+			return;
+		
+		event.setMessage(this.plugin.formatText(event.getMessage(), cstack));
 	}
 
 	@EventHandler
