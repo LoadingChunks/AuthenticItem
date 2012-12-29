@@ -1,21 +1,24 @@
 package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
+import net.minecraft.server.v1_4_6.ItemStack;
 import net.minecraft.server.v1_4_6.NBTTagCompound;
 import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
 
 public class AItem {
 	
-	CraftItemStack itemstack;
+	ItemStack itemstack;
 	AuthenticItem plugin;
 
 	public AItem(CraftItemStack item)
 	{
 		NBTTagCompound tag = CraftItemStack.asNMSCopy(item).getTag();
 		
-		if(tag == null)
-			CraftItemStack.asNMSCopy(item).setTag(new NBTTagCompound());
+		ItemStack it = CraftItemStack.asNMSCopy(item);
 		
-		this.itemstack = item;
+		if(tag == null)
+			it.setTag(new NBTTagCompound());
+		
+		this.itemstack = it;
 	}
 	
 	public void setPlugin(AuthenticItem plugin)
@@ -25,26 +28,26 @@ public class AItem {
 
 	public String getAuthentic()
 	{
-		if(CraftItemStack.asNMSCopy(this.itemstack).getTag().hasKey("authentic_type"))
-			return CraftItemStack.asNMSCopy(this.itemstack).getTag().getString("authentic_type");
+		if(this.itemstack.getTag().hasKey("authentic_type"))
+			return this.itemstack.getTag().getString("authentic_type");
 		else
 			return null;
 	}
 	
 	public void setAuthentic(String type)
 	{
-		CraftItemStack.asNMSCopy(this.itemstack).getTag().setString("authentic_type", type);
-		CraftItemStack.asNMSCopy(this.itemstack).getTag().setInt("RepairCost", 999);
+		this.itemstack.getTag().setString("authentic_type", type);
+		this.itemstack.getTag().setInt("RepairCost", 999);
 	}
 	
 	public net.minecraft.server.v1_4_6.ItemStack getStack()
 	{
-		return CraftItemStack.asNMSCopy(this.itemstack);
+		return this.itemstack;
 	}
 	
 	private NBTTagCompound getDisplay()
 	{
-		return CraftItemStack.asNMSCopy(this.itemstack).getTag().getCompound("display");
+		return this.itemstack.getTag().getCompound("display");
 	}
 	
 	public String getDisplayName()
@@ -67,7 +70,7 @@ public class AItem {
 	{
 		if(getDisplay() == null)
 		{
-			CraftItemStack.asNMSCopy(this.itemstack).getTag().setCompound("display", new NBTTagCompound());
+			this.itemstack.getTag().setCompound("display", new NBTTagCompound());
 		}
 		
 		NBTTagCompound display = getDisplay();
