@@ -59,6 +59,6 @@ public class AuthenticItem extends JavaPlugin {
 		else
 			name = displayName;
 		
-		return name;
+		return text.replace("{hand}", name);
 	}
 }

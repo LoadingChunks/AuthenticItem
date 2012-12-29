@@ -64,6 +64,8 @@ public class AuthenticItemEventListener implements Listener {
 			return;
 		
 		event.setMessage(this.plugin.formatText(event.getMessage(), cstack));
+		
+		return;
 	}
 
 	@EventHandler
