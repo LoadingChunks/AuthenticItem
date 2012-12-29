@@ -1,11 +1,7 @@
 package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
-import net.minecraft.server.NBTTagCompound;
-
-import org.bukkit.craftbukkit.entity.CraftItem;
-import org.bukkit.craftbukkit.inventory.CraftItemStack;
-import org.bukkit.entity.Item;
-import org.bukkit.inventory.ItemStack;
+import net.minecraft.server.v1_4_6.NBTTagCompound;
+import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
 
 public class AItem {
 	
@@ -14,10 +10,10 @@ public class AItem {
 
 	public AItem(CraftItemStack item)
 	{
-		NBTTagCompound tag = item.getHandle().getTag();
+		NBTTagCompound tag = CraftItemStack.asNMSCopy(item).getTag();
 		
 		if(tag == null)
-			item.getHandle().setTag(new NBTTagCompound());
+			CraftItemStack.asNMSCopy(item).setTag(new NBTTagCompound());
 		
 		this.itemstack = item;
 	}
@@ -29,26 +25,26 @@ public class AItem {
 
 	public String getAuthentic()
 	{
-		if(this.itemstack.getHandle().getTag().hasKey("authentic_type"))
-			return this.itemstack.getHandle().getTag().getString("authentic_type");
+		if(CraftItemStack.asNMSCopy(this.itemstack).getTag().hasKey("authentic_type"))
+			return CraftItemStack.asNMSCopy(this.itemstack).getTag().getString("authentic_type");
 		else
 			return null;
 	}
 	
 	public void setAuthentic(String type)
 	{
-		this.itemstack.getHandle().getTag().setString("authentic_type", type);
-		this.itemstack.getHandle().getTag().setInt("RepairCost", 999);
+		CraftItemStack.asNMSCopy(this.itemstack).getTag().setString("authentic_type", type);
+		CraftItemStack.asNMSCopy(this.itemstack).getTag().setInt("RepairCost", 999);
 	}
 	
-	public net.minecraft.server.ItemStack getStack()
+	public net.minecraft.server.v1_4_6.ItemStack getStack()
 	{
-		return this.itemstack.getHandle();
+		return CraftItemStack.asNMSCopy(this.itemstack);
 	}
 	
 	private NBTTagCompound getDisplay()
 	{
-		return this.itemstack.getHandle().getTag().getCompound("display");
+		return CraftItemStack.asNMSCopy(this.itemstack).getTag().getCompound("display");
 	}
 	
 	public String getDisplayName()
@@ -71,7 +67,7 @@ public class AItem {
 	{
 		if(getDisplay() == null)
 		{
-			this.itemstack.getHandle().getTag().setCompound("display", new NBTTagCompound());
+			CraftItemStack.asNMSCopy(this.itemstack).getTag().setCompound("display", new NBTTagCompound());
 		}
 		
 		NBTTagCompound display = getDisplay();

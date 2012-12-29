@@ -19,7 +19,7 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
 import org.bukkit.ChatColor;
 
-import org.bukkit.craftbukkit.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -35,7 +35,7 @@ public class AuthenticItemEventListener implements Listener {
 	}
 	
 	@EventHandler
-	public void playerChat(PlayerChatEvent event) // I hate myself for using that event type.
+	public void playerChat(AsyncPlayerChatEvent event) // I hate myself for using that event type.
 	{
 		CraftItemStack cstack = (CraftItemStack)event.getPlayer().getItemInHand();
 		

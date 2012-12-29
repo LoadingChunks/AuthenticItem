@@ -19,15 +19,15 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
+import net.minecraft.server.v1_4_6.ItemStack;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class AuthenticItemCommandExecutor implements CommandExecutor {
 
@@ -106,7 +106,7 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		item.setDisplayName(AuthenticTypes.valueOf(args[0].toUpperCase()) + " " + disp + ChatColor.RESET);
         		
-        		CraftItemStack cstack = new CraftItemStack(item.getStack());
+        		CraftItemStack cstack = CraftItemStack.asCraftMirror(item.getStack());
         		
         		cstack.setDurability((short)-5000);
 
