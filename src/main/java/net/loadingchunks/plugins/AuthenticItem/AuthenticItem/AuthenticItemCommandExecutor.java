@@ -17,6 +17,7 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -108,7 +109,10 @@ public class AuthenticItemCommandExecutor implements CommandExecutor {
         		
         		CraftItemStack cstack = CraftItemStack.asCraftMirror(item.getStack());
         		
-        		cstack.setDurability((short)-5000);
+        		int stackid = cstack.getTypeId();
+        		        		
+        		if(this.plugin.changeDura.contains(stackid))
+        			cstack.setDurability((short)-5000);
 
         		p.getInventory().setItemInHand(cstack);
         		sender.sendMessage("Item: " + item.getDisplayName());
