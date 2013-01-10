@@ -19,6 +19,7 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
@@ -32,7 +33,7 @@ public class AuthenticItem extends JavaPlugin {
 	private AuthenticItemEventListener eventListener;
 	//ClassListeners
 	
-	public ArrayList<Integer> changeDura;
+	public List<Integer> changeDura;
 
 	public void onDisable() {
 		// add any code you want to be executed when your plugin is disabled
@@ -42,15 +43,14 @@ public class AuthenticItem extends JavaPlugin {
 		
 		PluginManager pm = this.getServer().getPluginManager();
 		
+		changeDura = Arrays.asList(256,257,258,259,261,262,267,268,269,270,271,272,273,274,275,276,277,278,279,283,284,285,286,290,291,292,293,294,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317);
+		
 		eventListener = new AuthenticItemEventListener(this);
 		commandExecutor = new AuthenticItemCommandExecutor(this);
 
 		getCommand("authentic").setExecutor(commandExecutor);
 
 		pm.registerEvents(eventListener, this);
-		
-		changeDura = (ArrayList<Integer>) Arrays.asList(256,257,258,259,261,262,267,268,269,270,271,272,273,274,275,276,277,278,279,283,284,285,286,290,291,292,293,294,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317);
-
 	}
 	
 	public String formatText(String text, CraftItemStack cstack)
