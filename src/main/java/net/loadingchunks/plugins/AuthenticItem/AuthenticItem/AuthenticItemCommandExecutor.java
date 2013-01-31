@@ -17,17 +17,14 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import net.minecraft.server.v1_4_6.ItemStack;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_4_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 
 public class AuthenticItemCommandExecutor implements CommandExecutor {

@@ -17,12 +17,10 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bukkit.craftbukkit.v1_4_6.inventory.CraftItemStack;
-import org.bukkit.entity.Player;
+import org.bukkit.craftbukkit.v1_4_R1.inventory.CraftItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
