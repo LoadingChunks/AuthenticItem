@@ -20,7 +20,7 @@ package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
