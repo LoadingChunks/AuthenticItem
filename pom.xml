@@ -4,7 +4,7 @@
 	<groupId>net.loadingchunks.plugins.AuthenticItem</groupId>
 	<artifactId>AuthenticItem</artifactId>
 	<packaging>jar</packaging>
-	<version>1.2.1-SNAPSHOT</version>
+	<version>1.2.2-SNAPSHOT</version>
 	<name>AuthenticItem</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.6.2-R0.1-SNAPSHOT</version>
+            <version>1.6.4-R0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

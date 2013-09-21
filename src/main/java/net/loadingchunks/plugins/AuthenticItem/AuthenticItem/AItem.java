@@ -1,9 +1,9 @@
 package net.loadingchunks.plugins.AuthenticItem.AuthenticItem;
 
-import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_6_R3.inventory.CraftItemStack;
 
-import net.minecraft.server.v1_6_R2.ItemStack;
-import net.minecraft.server.v1_6_R2.NBTTagCompound;
+import net.minecraft.server.v1_6_R3.ItemStack;
+import net.minecraft.server.v1_6_R3.NBTTagCompound;
 
 public class AItem {
 	
@@ -41,7 +41,7 @@ public class AItem {
 		this.itemstack.getTag().setInt("RepairCost", 999);
 	}
 	
-	public net.minecraft.server.v1_6_R2.ItemStack getStack()
+	public net.minecraft.server.v1_6_R3.ItemStack getStack()
 	{
 		return this.itemstack;
 	}
